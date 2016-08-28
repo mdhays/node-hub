@@ -1,0 +1,21 @@
+{
+  "name": "node-hub",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Matthew Hays <mdhays1995@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/mdhays/node-hub",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

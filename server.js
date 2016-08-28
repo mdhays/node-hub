@@ -6,7 +6,8 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const path = require('path');
 const pg = require('pg').native;
-
+const POSTGRES_URL = process.env.POSTGRES_URL || 'postgres://localhost:5432/nodehub';
+let db = new pg.Client(POSTGRES_URL);
 
 app.set('view engine', 'jade');
 
