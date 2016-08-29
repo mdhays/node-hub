@@ -1,6 +1,28 @@
+html {
+  font-family: 'Source Sans Pro', sans-serif; }
+
+body {
+  background-color: #333366;
+  color: #CCFFFF; }
+
 h1 {
-  font-family: 'Source Sans Pro', sans-serif;
   margin-top: 50px;
   text-align: center; }
+
+th {
+  padding: 10px;
+  text-align: center; }
+
+td {
+  text-align: center;
+  padding-right: 10px; }
+
+table {
+  margin: auto; }
+
+#save-data {
+  background-color: #336666;
+  color: #CCFFFF;
+  border-color: #CCFFFF; }
 
 /*# sourceMappingURL=style.css.map */

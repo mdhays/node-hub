@@ -27,6 +27,14 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/home', (req, res) => {
+  db.query('SELECT * FROM tracking', (err, result) => {
+    if (err) throw err;
+
+    res.send(result.rows);
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
