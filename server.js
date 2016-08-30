@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const path = require('path');
 const pg = require('pg').native;
-const POSTGRES_URL = process.env.POSTGRES_URL || 'postgres://localhost:5432/nodehub';
-let db = new pg.Client(POSTGRES_URL);
+const DATABASE_URL = process.env.DATABASE_URL || 'postgres://localhost:5432/nodehub';
+let db = new pg.Client(DATABASE_URL);
 
 app.set('view engine', 'jade');
 
@@ -22,10 +22,27 @@ app.use(require('node-sass-middleware')({
 
 app.use(express.static('public'));
 
+pg.defaults.ssl = true;
+
 
 app.get('/', (req, res) => {
   res.render('index');
 });
+
+db.connect((err) => {
+  if (err) throw err;
+
+    pg.connect(DATABASE_URL, function(err, client) {
+      if (err) throw err;
+      console.log('Connected to postgres! Getting schemas...');
+      db = client;
+      db.query('SELECT * FROM tracking', (err, result) => {
+        if (err) throw err;
+        console.log(result.rows);
+      });
+    });
+});
+
 
 app.get('/home', (req, res) => {
   db.query('SELECT * FROM tracking', (err, result) => {
